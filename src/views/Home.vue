@@ -1,7 +1,7 @@
 <template>
   <div id="homepage">
     <Header />
-    <Content />
+    <Content :contents=contents :index=index />
   </div>
 </template>
 
@@ -19,12 +19,12 @@
     data() {
       return {
         index: 0,
-        content: [
+        contents: [
           {
             title: 'Nike Lebron 17',
             text: 'A large Max Air unit in heel <br/>and <strong>Zoom Air</strong> technology <br/>under the forefoot',
             images: [
-              '../../assets/images/shoe-01.png'
+              '../../assets/images/shoe-01.png',
             ]
           },
           {

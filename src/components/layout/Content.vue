@@ -1,10 +1,10 @@
 <template>
   <section>
     <div class="text">
-      <h1>Nike Lebron 17</h1>
-      <h5>A large Max Air unit in heel <br/>and <strong>Zoom Air</strong> technology <br/>under the forefoot</h5>
+      <h1>{{ this.content.title }}</h1>
+      <h5 v-html=this.content.text></h5>
     </div>
-    <div class="images">
+    <div class="images" v-for="image in this.content.images" v-bind:key="image.lenght">
       <img class="single-element" src="../../assets/images/shoe-01.png" alt="Shoe">
     </div>
   </section>
@@ -12,7 +12,23 @@
 
 <script>
   export default {
-    name: 'Content'
+    name: 'Content',
+    props: {
+      contents: {
+        type: Array,
+        required: true,
+      },
+      index: {
+        type: Number,
+        default: 0,
+      }
+    },
+    computed: {
+      content() {
+        console.log(this.contents[this.index].images);
+        return this.contents[this.index]
+      }
+    }
   }
 </script>
 
@@ -47,6 +63,7 @@
     font-size: 18px;
     line-height: 26px;
     color: var(--text-colour);
+    width: 19.5vw;
   }
 
   section div.images img.single-element {
