@@ -23,17 +23,12 @@
           {
             title: 'Nike Lebron 17',
             text: 'A large Max Air unit in heel <br/>and <strong>Zoom Air</strong> technology <br/>under the forefoot',
-            images: [
-              '../../assets/images/shoe-01.png',
-            ]
+            images: ['shoe-01']
           },
           {
             title: 'Feel strong like Lebron',
             text: 'The LeBron 17 LMTD features a large <strong>Max Air</strong> unit in the heel and Zoom Air cushioning for extra <strong>comfort</strong>. </br></br> Knit material wraps your feet for <strong>lightweight</strong> support so you can make quick, powerful moves like a champ.',
-            images: [
-              '../../assets/images/shoe-02.png',
-              '../../assets/images/shoe-03.png'
-            ]
+            images: ['shoe-02','shoe-03']
           }
         ]
       }

@@ -5,7 +5,7 @@
       <h5 v-html=this.content.text></h5>
     </div>
     <div class="images" v-for="image in this.content.images" v-bind:key="image.lenght">
-      <img class="single-element" src="../../assets/images/shoe-01.png" alt="Shoe">
+      <img class="single-element" :src="getImage(image)" alt="Shoe">
     </div>
   </section>
 </template>
@@ -25,8 +25,12 @@
     },
     computed: {
       content() {
-        console.log(this.contents[this.index].images);
-        return this.contents[this.index]
+        return this.contents[this.index];
+      },
+    },
+    methods: {
+      getImage(image) {
+        return require( `../../assets/images/${image}.png`);
       }
     }
   }
