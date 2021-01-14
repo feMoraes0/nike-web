@@ -1,16 +1,42 @@
 <template>
   <div id="homepage">
     <Header />
+    <Content />
   </div>
 </template>
 
 <script>
   import Header from '../components/layout/Header.vue';
+  import Content from '../components/layout/Content.vue';
 
   export default {
     name: 'Home',
     components: {
+      Content,
       Header,
+    },
+
+    data() {
+      return {
+        index: 0,
+        content: [
+          {
+            title: 'Nike Lebron 17',
+            text: 'A large Max Air unit in heel <br/>and <strong>Zoom Air</strong> technology <br/>under the forefoot',
+            images: [
+              '../../assets/images/shoe-01.png'
+            ]
+          },
+          {
+            title: 'Feel strong like Lebron',
+            text: 'The LeBron 17 LMTD features a large <strong>Max Air</strong> unit in the heel and Zoom Air cushioning for extra <strong>comfort</strong>. </br></br> Knit material wraps your feet for <strong>lightweight</strong> support so you can make quick, powerful moves like a champ.',
+            images: [
+              '../../assets/images/shoe-02.png',
+              '../../assets/images/shoe-03.png'
+            ]
+          }
+        ]
+      }
     }
   }
 </script>
@@ -28,6 +54,7 @@
   padding: 0;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
 }
 
 #homepage {

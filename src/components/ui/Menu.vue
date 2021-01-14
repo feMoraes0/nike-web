@@ -22,6 +22,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: rgba(250, 250, 250, 0.5);
+    padding: 22px 2.01vw;
+    border-radius: 31px;
   }
 
   div#menu p {
@@ -32,7 +35,7 @@
   }
   
   div#menu p, div#menu img {
-    margin: 0px 23px;
+    margin: 0px 1.60vw;
   }
 
   div#menu p.active {
