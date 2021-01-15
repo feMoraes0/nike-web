@@ -1,6 +1,7 @@
 <template>
   <div id="homepage">
     <Header />
+    <SlideSelector :index=index :total=contents.length v-on:changeSlide="changeSlide($event)" />
     <Content :contents=contents :index=index />
   </div>
 </template>
@@ -8,12 +9,14 @@
 <script>
   import Header from '../components/layout/Header.vue';
   import Content from '../components/layout/Content.vue';
+import SlideSelector from '../components/ui/SlideSelector.vue';
 
   export default {
     name: 'Home',
     components: {
       Content,
       Header,
+      SlideSelector,
     },
 
     data() {
@@ -31,6 +34,12 @@
             images: ['shoe-02','shoe-03']
           }
         ]
+      }
+    },
+
+    methods: {
+      changeSlide(item) {
+        this.index = item;
       }
     }
   }
@@ -50,11 +59,13 @@
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
+  overflow: hidden !important;
 }
 
 #homepage {
   height: 100vh;
   width: 100vw;
   background-color: var(--background-colour);
+  
 }
 </style>

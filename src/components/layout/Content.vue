@@ -4,8 +4,14 @@
       <h1>{{ this.content.title }}</h1>
       <h5 v-html=this.content.text></h5>
     </div>
-    <div class="images" v-for="image in this.content.images" v-bind:key="image.lenght">
-      <img class="single-element" :src="getImage(image)" alt="Shoe">
+    <div class="images">
+      <img
+        :class="getImageClass(content.images.length)"
+        v-for="image in this.content.images"
+        :key="image.lenght"
+        :src="getImage(image)"
+        :alt="image"
+      >
     </div>
   </section>
 </template>
@@ -31,6 +37,11 @@
     methods: {
       getImage(image) {
         return require( `../../assets/images/${image}.png`);
+      },
+
+      getImageClass(quantity) {
+        console.log(quantity);
+        return quantity === 1 ? 'single-child' : 'multi-child';
       }
     }
   }
@@ -49,7 +60,6 @@
   section div.text {
     width: 29.9vw;
     margin-left: 11vw;
-    animation: hideShow 2s ease-in-out both;
   }
 
   section div.text h1 {
@@ -70,39 +80,55 @@
     width: 19.5vw;
   }
 
-  section div.images img.single-element {
+  section div.images img.single-child {
     width: 48.8vw;
-    transform: translate(-1.59vw, 0);
-    animation: bottomUp 2s ease-in-out;
+    animation: 1s ease-in-out 0s bottomUp;
+    position: absolute;
+    right: 10.76vw;
+    bottom: 17vh;
   }
 
-  @keyframes hideShow {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  section div.images img.multi-child {
+    position: absolute;
+    width: 48.8vw;
+  }
+
+  section div.images img.multi-child:first-child {
+    position: absolute;
+    width: 48.8vw;
+    top: -2.5vh;
+    right: 4.17vw;
+    animation: upBottom 1s ease-in-out;
+  }
+
+  section div.images img.multi-child:last-child {
+    position: absolute;
+    width: 48.8vw;
+    bottom: -2.5vh;
+    right: 24.51vw;
+    animation: bottomUp 1s ease-in-out;
   }
 
   @keyframes bottomUp {
     0% {
-      transform: translate(-1.59vw, 35vh);
-      opacity: 0.3;
-    }
-
-    55% {
-      transform: translate(-1.59vw, -2vh);
-      opacity: 0.8;
-    }
-
-    80% {
-      transform: translate(-1.59vw, 5vh);
-      opacity: 1;
+      transform: translateY(20%);
+      opacity: 0.0;
     }
 
     100% {
-      transform: translate(-1.59vw, 0);
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes upBottom {
+    0% {
+      transform: translateY(-20%);
+      opacity: 0.0;
+    }
+
+    100% {
+      transform: translateY(0);
       opacity: 1;
     }
   }
