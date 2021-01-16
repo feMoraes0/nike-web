@@ -18,6 +18,8 @@
 </template>
 
 <script>
+  import Animation from '../../helpers/Animation';
+
   export default {
     name: 'Content',
 
@@ -47,26 +49,19 @@
         return quantity === 1 ? 'single-child' : 'multi-child';
       },
 
-      animate(element, animation) {
-        element.classList.toggle(animation);
-        setTimeout(() => {
-          element.classList.toggle(animation);
-        }, 1000);
-      },
-
       handleAnimations() {
         const textBox = document.getElementsByClassName('text')[0];
         const images = document.getElementsByClassName('content-image');
-        let imageAnimations = ['animate-bottom-up', 'animate-up-bottom'];
+        let imageAnimations = [Animation.BOTTOM_UP, Animation.TOP_DOWN];
 
         if (images.length === 2) {
           imageAnimations = imageAnimations.reverse();
         }
 
-        this.animate(textBox, 'animate-bottom-up');
+        Animation.animate(textBox, Animation.BOTTOM_UP);
         images.forEach((image, index) => {
           const animation = imageAnimations[index];
-          this.animate(image, animation);
+          Animation.animate(image, animation);
         })
       }
     },
@@ -82,6 +77,8 @@
 </script>
 
 <style scoped>
+  @import "../../helpers/Animation/style.css";
+
   section {
     width: 100vw;
     height: 100vh;
@@ -139,45 +136,5 @@
     width: 48.8vw;
     bottom: -2.5vh;
     right: 24.51vw;
-  }
-
-  .animate-bottom-up {
-    animation: bottomUp 1s ease-in-out;
-  }
-
-  .animate-bottom-up-reverse {
-    animation: bottomUp 1s ease-in-out reverse;
-  }
-
-  .animate-up-bottom {
-    animation: upBottom 1s ease-in-out;
-  }
-
-  .animate-up-bottom-reverse {
-    animation: upBottom 1s ease-in-out reverse;
-  }
-
-  @keyframes bottomUp {
-    0% {
-      transform: translateY(20%);
-      opacity: 0.0;
-    }
-
-    100% {
-      transform: translateY(0%);
-      opacity: 1;
-    }
-  }
-
-  @keyframes upBottom {
-    0% {
-      transform: translateY(-20%);
-      opacity: 0.0;
-    }
-
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
   }
 </style>

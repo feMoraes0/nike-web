@@ -1,0 +1,32 @@
+
+.animate-bottom-up {
+  animation: bottomUp 1s ease-in-out;
+}
+
+.animate-top-down {
+  animation: topDown 1s ease-in-out;
+}
+
+@keyframes bottomUp {
+  0% {
+    transform: translateY(20%);
+    opacity: 0.0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes topDown {
+  0% {
+    transform: translateY(-20%);
+    opacity: 0.0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
