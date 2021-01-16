@@ -80,6 +80,7 @@
     margin-right: 2.70vw;
     box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.141882);
     margin-bottom: 10px;
+    cursor: pointer;
   }
 
   footer form div p {

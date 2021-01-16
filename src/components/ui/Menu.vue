@@ -37,6 +37,7 @@
   
   div#menu p, div#menu img {
     margin: 0px 1.60vw;
+    cursor: pointer;
   }
 
   div#menu p.active {

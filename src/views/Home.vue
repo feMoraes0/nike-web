@@ -15,7 +15,7 @@
   import Header from '../components/layout/Header.vue';
   import Content from '../components/layout/Content.vue';
   import Footer from '../components/layout/Footer.vue';
-  import SlideSelector from '../components/ui/SlideSelector.vue';
+  import SlideSelector from '../components/layout/SlideSelector.vue';
 
   export default {
     name: 'Home',
