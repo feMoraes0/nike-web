@@ -20,6 +20,7 @@
 <script>
   export default {
     name: 'Content',
+
     props: {
       contents: {
         type: Array,
@@ -30,11 +31,13 @@
         default: 0,
       }
     },
+
     computed: {
       content() {
         return this.contents[this.index];
       },
     },
+
     methods: {
       getImage(image) {
         return require( `../../assets/images/${image}.png`);
@@ -42,7 +45,38 @@
 
       getImageClass(quantity) {
         return quantity === 1 ? 'single-child' : 'multi-child';
+      },
+
+      animate(element, animation) {
+        element.classList.toggle(animation);
+        setTimeout(() => {
+          element.classList.toggle(animation);
+        }, 1000);
+      },
+
+      handleAnimations() {
+        const textBox = document.getElementsByClassName('text')[0];
+        const images = document.getElementsByClassName('content-image');
+        let imageAnimations = ['animate-bottom-up', 'animate-up-bottom'];
+
+        if (images.length === 2) {
+          imageAnimations = imageAnimations.reverse();
+        }
+
+        this.animate(textBox, 'animate-bottom-up');
+        images.forEach((image, index) => {
+          const animation = imageAnimations[index];
+          this.animate(image, animation);
+        })
       }
+    },
+
+    mounted() {
+      this.handleAnimations();
+    },
+
+    updated() {
+      this.handleAnimations()
     }
   }
 </script>
