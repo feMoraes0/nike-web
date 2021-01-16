@@ -29,11 +29,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 21px 3.06vw;
-  z-index: 2;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
 }
 
 </style>

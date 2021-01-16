@@ -7,6 +7,7 @@
 <script>
   export default {
     name: 'SlideSelector',
+
     props: {
       index: {
         type: Number,
@@ -17,13 +18,13 @@
         required: true,
       }
     },
+
     methods: {
       isActive(item) {
         return item - 1 === this.index ? 'active' : '';
       },
 
       changeSlide(item) {
-        console.log(item);
         this.$emit('changeSlide', item - 1);
       }
     }
@@ -32,8 +33,6 @@
 
 <style scoped>
   div#selector {
-    position: absolute;
-    height: 100vh;
     width: 4.51vw;
     display: flex;
     flex-direction: column;

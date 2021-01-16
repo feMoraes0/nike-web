@@ -8,7 +8,7 @@
       <img
         :class="getImageClass(content.images.length)"
         v-for="image in this.content.images"
-        :key="image.lenght"
+        :key="content.images.indexOf(image)"
         :src="getImage(image)"
         :alt="image"
       >
@@ -40,7 +40,6 @@
       },
 
       getImageClass(quantity) {
-        console.log(quantity);
         return quantity === 1 ? 'single-child' : 'multi-child';
       }
     }
@@ -91,6 +90,7 @@
   section div.images img.multi-child {
     position: absolute;
     width: 48.8vw;
+    z-index: 2;
   }
 
   section div.images img.multi-child:first-child {

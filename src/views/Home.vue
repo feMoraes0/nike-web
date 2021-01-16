@@ -1,21 +1,28 @@
 <template>
   <div id="homepage">
-    <Header />
-    <SlideSelector :index=index :total=contents.length v-on:changeSlide="changeSlide($event)" />
-    <Content :contents=contents :index=index />
+    <div id="foreground">
+      <Header />
+      <SlideSelector :index=index :total=contents.length v-on:changeSlide="changeSlide($event)" />
+      <Footer />
+    </div>
+    <div class="background">
+      <Content :contents=contents :index=index />
+    </div>
   </div>
 </template>
 
 <script>
   import Header from '../components/layout/Header.vue';
   import Content from '../components/layout/Content.vue';
-import SlideSelector from '../components/ui/SlideSelector.vue';
+  import Footer from '../components/layout/Footer.vue';
+  import SlideSelector from '../components/ui/SlideSelector.vue';
 
   export default {
     name: 'Home',
     components: {
       Content,
       Header,
+      Footer,
       SlideSelector,
     },
 
@@ -46,26 +53,42 @@ import SlideSelector from '../components/ui/SlideSelector.vue';
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;1,700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;1,700&display=swap');
 
-:root {
-  --background-colour: #FAFAFA;
-  --text-colour: #000000;
-  --button-background-colour: #FFFFFF;
-}
+  :root {
+    --background-colour: #FAFAFA;
+    --text-colour: #000000;
+    --button-background-colour: #FFFFFF;
+  }
 
-* {
-  padding: 0;
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  box-sizing: border-box;
-  overflow: hidden !important;
-}
+  * {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    overflow: hidden !important;
+  }
 
-#homepage {
-  height: 100vh;
-  width: 100vw;
-  background-color: var(--background-colour);
-  
-}
+  #homepage {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--background-colour);
+  }
+
+  #foreground {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 5;
+    position: absolute;
+  }
+
+  #homepage div.background {
+    z-index: 1;
+  }
+
+
+
 </style>
