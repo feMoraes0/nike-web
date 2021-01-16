@@ -6,6 +6,7 @@
     </div>
     <div class="images">
       <img
+        class="content-image"
         :class="getImageClass(content.images.length)"
         v-for="image in this.content.images"
         :key="content.images.indexOf(image)"
@@ -81,7 +82,6 @@
 
   section div.images img.single-child {
     width: 48.8vw;
-    animation: 1s ease-in-out 0s bottomUp;
     position: absolute;
     right: 10.76vw;
     bottom: 17vh;
@@ -98,7 +98,6 @@
     width: 48.8vw;
     top: -2.5vh;
     right: 4.17vw;
-    animation: upBottom 1s ease-in-out;
   }
 
   section div.images img.multi-child:last-child {
@@ -106,7 +105,22 @@
     width: 48.8vw;
     bottom: -2.5vh;
     right: 24.51vw;
+  }
+
+  .animate-bottom-up {
     animation: bottomUp 1s ease-in-out;
+  }
+
+  .animate-bottom-up-reverse {
+    animation: bottomUp 1s ease-in-out reverse;
+  }
+
+  .animate-up-bottom {
+    animation: upBottom 1s ease-in-out;
+  }
+
+  .animate-up-bottom-reverse {
+    animation: upBottom 1s ease-in-out reverse;
   }
 
   @keyframes bottomUp {

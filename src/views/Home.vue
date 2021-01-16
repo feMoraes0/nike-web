@@ -45,9 +45,47 @@
     },
 
     methods: {
-      changeSlide(item) {
-        this.index = item;
-      }
+      async changeSlide(item) {
+        const textBox = document.getElementsByClassName('text')[0];
+        const images = document.getElementsByClassName('content-image');
+        let imageAnimations = ['animate-bottom-up-reverse', 'animate-up-bottom-reverse'];
+        if (images.length === 2) {
+          imageAnimations = imageAnimations.reverse();
+        }
+
+        this.animate(textBox, 'animate-bottom-up-reverse');
+        images.forEach((image, index) => {
+          const animation = imageAnimations[index];
+          this.animate(image, animation);
+        })
+
+        await setTimeout(() => {
+          this.index = item;
+        }, 1000)
+
+      },
+
+      animate(element, animation) {
+        element.classList.toggle(animation);
+        setTimeout(() => {
+          element.classList.toggle(animation);
+        }, 1000);
+      },
+    },
+
+    mounted() {
+      const textBox = document.getElementsByClassName('text')[0];
+      const image = document.getElementsByClassName('content-image')[0];
+      const animation = 'animate-bottom-up';
+
+      textBox.classList.toggle(animation);
+      image.classList.toggle(animation);
+
+      setTimeout(() => {
+        textBox.classList.toggle(animation);
+        image.classList.toggle(animation);
+        console.log('removing animation...')
+      }, 1000);
     }
   }
 </script>
