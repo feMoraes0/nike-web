@@ -50,19 +50,22 @@
       },
 
       handleAnimations() {
-        const textBox = document.getElementsByClassName('text')[0];
+        const textBox = document.getElementsByClassName('text');
         const images = document.getElementsByClassName('content-image');
         let imageAnimations = [Animation.BOTTOM_UP, Animation.TOP_DOWN];
 
-        if (images.length === 2) {
+        if ( images.length === 2 ) {
           imageAnimations = imageAnimations.reverse();
         }
 
-        Animation.animate(textBox, Animation.BOTTOM_UP);
-        images.forEach((image, index) => {
-          const animation = imageAnimations[index];
-          Animation.animate(image, animation);
-        })
+        if( Array.isArray(textBox) && Array.isArray(images) ) {
+          Animation.animate(textBox[0], Animation.BOTTOM_UP);
+
+          images.forEach((image, index) => {
+            const animation = imageAnimations[index];
+            Animation.animate(image, animation);
+          })
+        }
       }
     },
 
