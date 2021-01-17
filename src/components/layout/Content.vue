@@ -54,18 +54,19 @@
         const images = document.getElementsByClassName('content-image');
         let imageAnimations = [Animation.BOTTOM_UP, Animation.TOP_DOWN];
 
+        if( !Array.isArray(textBox) || !Array.isArray(images) ) {
+          return;
+        }
+
         if ( images.length === 2 ) {
           imageAnimations = imageAnimations.reverse();
         }
 
-        if( Array.isArray(textBox) && Array.isArray(images) ) {
-          Animation.animate(textBox[0], Animation.BOTTOM_UP);
-
-          images.forEach((image, index) => {
-            const animation = imageAnimations[index];
-            Animation.animate(image, animation);
-          })
-        }
+        Animation.animate(textBox[0], Animation.BOTTOM_UP);
+        images.forEach((image, index) => {
+          const animation = imageAnimations[index];
+          Animation.animate(image, animation);
+        })
       }
     },
 
