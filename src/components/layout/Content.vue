@@ -54,15 +54,14 @@
         const images = document.getElementsByClassName('content-image');
         let imageAnimations = [Animation.BOTTOM_UP, Animation.TOP_DOWN];
 
-        if( typeof(textBox) !== 'object' || typeof(images) !== 'object' ) {
+        if( textBox.length === 0 || images.length === 0 ) {
           return;
         }
 
         if ( images.length === 2 ) {
           imageAnimations = imageAnimations.reverse();
         }
-
-        console.log('triggered');
+        
         Animation.animate(textBox[0], Animation.BOTTOM_UP);
         images.forEach((image, index) => {
           const animation = imageAnimations[index];
