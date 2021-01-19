@@ -21,14 +21,14 @@
 
     methods: {
       isActive(item) {
-        if( item > this.total || item < 0 )
+        if( item > this.total || item <= 0 )
           return '';
 
         return item - 1 === this.index ? 'active' : '';
       },
 
       changeSlide(item) {
-        if( item > this.total || item < 0 )
+        if( item > this.total || item <= 0 )
           return;
 
         this.$emit('changeSlide', item - 1);
