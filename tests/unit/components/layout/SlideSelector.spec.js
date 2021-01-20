@@ -88,6 +88,15 @@ describe('SlideSelector.vue', () => {
       // THEN
       expect(wrapper.vm.changeSlide(receivedValue)).toEqual();
     });
+
+    it('should emit changeSlide with slide equal 0', () => {
+      // GIVEN
+      const item = 1;
+      // WHEN
+      wrapper.vm.changeSlide(item);
+      // THEN
+      expect(wrapper.emitted().changeSlide).toEqual([[0]]);
+    });
   });
 
 });
