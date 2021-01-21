@@ -1,8 +1,10 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import Content from '../../../../src/components/layout/Content.vue';
+import Animation from '../../../../src/helpers/Animation';
+jest.mock('../../../../src/helpers/Animation');
 
 describe('Content.vue', () => {
-  const wrapper = mount(
+  const wrapper = shallowMount(
     Content,
     {
       propsData: {
@@ -42,17 +44,33 @@ describe('Content.vue', () => {
     });
   });
 
-  it('should return single-child image class name when quantity is equal 1', () => {
-    // GIVEN
-    const quantity = 1;
-    // THEN
-    expect(wrapper.vm.getImageClass(quantity)).toEqual('single-child');
+  describe('getImageClass function', () => {
+    it('should return single-child image class name when quantity is equal 1', () => {
+      // GIVEN
+      const quantity = 1;
+      // THEN
+      expect(wrapper.vm.getImageClass(quantity)).toEqual('single-child');
+    });
+  
+    it('should return multi-child image class name when quantity is greater than 1', () => {
+      // GIVEN
+      const quantity = 2;
+      // THEN
+      expect(wrapper.vm.getImageClass(quantity)).toEqual('multi-child');
+    });
   });
 
-  it('should return multi-child image class name when quantity is greater than 1', () => {
-    // GIVEN
-    const quantity = 2;
-    // THEN
-    expect(wrapper.vm.getImageClass(quantity)).toEqual('multi-child');
+  describe('handleAnimations function', () => {
+    it('should find and animate html elements', () => {
+      // GIVEN
+      const mockHTMLElement = { classList: { toggle: jest.fn() } };
+      const spyFunc = jest.fn(() => [mockHTMLElement, mockHTMLElement]);
+      Object.defineProperty(global.document, 'getElementsByClassName', { value: spyFunc });
+      Animation.animate = jest.fn();
+      // WHEN
+      wrapper.vm.handleAnimations();
+      // THEN
+      expect(Animation.animate).toHaveBeenCalledTimes(3);
+    });
   });
 });
