@@ -10,6 +10,8 @@
  - `Animations`: JavaScript and CSS combination.
  - `Component Lifecycle`: mounted and updated were used to trigger animations.
  - `Components communication`: using props and $emit.
+ - `Unit Test with JEST`
+ - `pre-push`: package which allows run scripts before push command.
 
 ## :book: How to use
 
