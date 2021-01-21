@@ -58,7 +58,7 @@
           return;
         }
 
-        if ( images.length === 2 ) {
+        if ( images.length === imageAnimations.length ) {
           imageAnimations = imageAnimations.reverse();
         }
         
